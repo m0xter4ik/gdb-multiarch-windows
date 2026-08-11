@@ -1,4 +1,4 @@
-FROM ubuntu:24.04 as SOURCES
+FROM ubuntu:24.04 AS sources
 
 ARG CPU_CORES=8
 ARG GMP_VERSION=6.3.0
@@ -61,7 +61,7 @@ RUN curl -fSL \
     -o "/tmp/gdb.tar.xz" && \
     tar xf /tmp/gdb.tar.xz -C /tmp/src
 
-FROM SOURCES AS DEPS_BUILD
+FROM sources AS deps_build
 
 # Build PDCurses
 RUN cd /tmp/src/PDCurses-${PDCURSES_VERSION}/wincon && \
@@ -112,7 +112,7 @@ RUN mkdir -p /tmp/build/mpfr && \
     make -j"${CPU_CORES}" && \
     make install
 
-FROM DEPS_BUILD AS PROJECT_BUILD
+FROM deps_build AS project_build
 
 # Cross-compile GDB for Windows with MinGW-w64, enabling multi-architecture support for debugging both Windows and Linux target applications
 # (See:
