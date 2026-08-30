@@ -1,4 +1,4 @@
-# GDB multi-architecture build for Windows
+# GDB 17.2 multi-architecture build for Windows
 
 This repository contains build scripts to cross-compile [The GNU Project Debugger (GDB)](https://www.sourceware.org/gdb/) for Windows using [MinGW-w64](https://www.mingw-w64.org/) with all dependencies statically linked and all target architectures enabled. The resulting standalone executable can be used to connect to [gdbserver](https://sourceware.org/gdb/onlinedocs/gdb/Server.html) instances and perform remote debugging of any supported target platform and architecture from a local Windows machine. Paired with the [support for GDB in Visual Studio Code](https://code.visualstudio.com/docs/cpp/cpp-debug), this provides a free and flexible alternative to the [remote GDB debugging functionality in Visual Studio](https://docs.microsoft.com/en-us/cpp/linux/deploy-run-and-debug-your-linux-project).
 
